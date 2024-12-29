@@ -48,7 +48,7 @@ export const environment = {
 `environment.prod.ts` (use your project's config here) : 
 ```typescript
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     options: {
       apiKey: '******',
@@ -79,7 +79,7 @@ import { environment } from '../environments/environment';
 export class AppModule {}
 ```
 
-## CollectionService
+## Collection Service
 You can create a new service per collection of Firestore:
 
 `flight.service.ts`: 
@@ -139,8 +139,6 @@ export class AppComponent {
 }
 ```
 
-## API
-
 The service exposes an API to do most of common tasks: 
 - `valueChanges`: returns an `Observable`
 - `load`: returns a `Promise` using the cache if available
@@ -160,6 +158,18 @@ service.valueChanges('id'); // Documents with id "id"
 service.valueChanges([ '1', '2' ]); // Two documents with the ids specified
 service.valueChanges([ where('key', '==', value) ]); // All documents where "key" is value
 ```
+
+⚠️⚠️ 
+
+#### About `where` & `new Date()`
+`ngfire` will memorize the query, but `new Date()` changes each time you trigger the query, so the query won't be memorized as expected.
+Examples : 
+- `where('createdAt', '<', new Date())`: Query will be trigger each time this is call.
+- `where('createdAt', '<', nextMinute(new Date()))`: Query is cached for the next minute.
+- `where('createdAt', '<', nextDay(new Date()))`: Query is cached for the current user session.
+
+⚠️⚠️
+
 
 ### load
 ```typescript
@@ -254,4 +264,56 @@ service.update('id1', (doc, tx) => {
   }
   return { age: newAge };
 });
+```
+
+
+
+## Subcollection Service
+To access a subcollection you can extend the `FireSubcollection` service:
+```typescript
+@Injectable({ providedIn: 'root' })
+export class TicketService extends FireSubcollection<Ticket> {
+  readonly path = 'flights/:flightId/tickets';
+  // Field to be used for the document id (default: id)
+  override readonly idKey = 'ticketId';
+  // Field to be used for the full path reference (default: path)
+  override readonly pathKey = 'refPath';
+}
+```
+
+The service extends `FireCollection` with additional features:
+
+### Query Collection Group
+By default the subcollection will query the `collectionGroup`:
+```typescript
+// Query all documents inside a collection with name "tickets"
+service.valueChanges();
+service.valueChanges([where('status', '==', 'cancelled')]);
+```
+
+### Query a sub collection
+Add an object with the value of the params as last argument:
+```typescript
+service.valueChanges({ flightId: 'AZ301' });
+service.valueChanges('001', { flightId: 'AZ301' }); // 001 beeing the ticketId
+service.valueChanges([where('status', '==', 'cancelled')], { flightId: 'AZ301' });
+```
+
+### Write on a sub collection
+Add params as an field of the `WriteOption`:
+```typescript
+const params = { flightId: 'AZ301' };
+service.add(ticket, { params });
+service.update('001', ticket, { params }); // 001 beeing the ticketId
+service.remove('001', { params });
+```
+
+Example using the batch: 
+```typescript
+const write = service.batch();
+const params = { flightId: 'AZ301' };
+await service.add(ticket, { params, write });
+await service.update('001', ticket, { params, write });
+await service.remove('002', { params, write });
+write.commit();
 ```
