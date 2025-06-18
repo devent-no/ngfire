@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx build playground",
-    "startTime": "2025-06-18T13:10:23.031Z",
-    "endTime": "2025-06-18T13:10:41.695Z",
+    "startTime": "2025-06-18T13:19:35.838Z",
+    "endTime": "2025-06-18T13:19:56.458Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "ngfire:build:production",
       "target": "build",
       "projectName": "ngfire",
-      "hash": "17955155618627181641",
-      "startTime": "2025-06-18T13:10:23.090Z",
-      "endTime": "2025-06-18T13:10:23.097Z",
+      "hash": "7808413813405299201",
+      "startTime": "2025-06-18T13:19:35.842Z",
+      "endTime": "2025-06-18T13:19:35.871Z",
       "params": "",
       "cacheStatus": "local-cache-hit",
       "status": 0
@@ -21,9 +21,9 @@
       "taskId": "playground:build",
       "target": "build",
       "projectName": "playground",
-      "hash": "14544460695527053432",
-      "startTime": "2025-06-18T13:10:23.102Z",
-      "endTime": "2025-06-18T13:10:41.681Z",
+      "hash": "5719054913733564930",
+      "startTime": "2025-06-18T13:19:35.874Z",
+      "endTime": "2025-06-18T13:19:56.458Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

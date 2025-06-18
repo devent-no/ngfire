@@ -1,5 +1,5 @@
 import { inject, Injectable, InjectFlags, Injector, PLATFORM_ID } from "@angular/core";
-import { makeStateKey, TransferState } from "@angular/platform-browser";
+import { makeStateKey, TransferState } from "@angular/core";
 import { collection, doc, DocumentData, DocumentSnapshot, query, queryEqual, QuerySnapshot, runTransaction, writeBatch } from 'firebase/firestore';
 import type { Transaction, CollectionReference, DocumentReference, Query, QueryConstraint } from 'firebase/firestore';
 import { FIRESTORE } from "./tokens";
