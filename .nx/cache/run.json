@@ -1,8 +1,8 @@
 {
   "run": {
-    "command": "nx build ngfire-schematics",
-    "startTime": "2025-06-18T12:03:52.320Z",
-    "endTime": "2025-06-18T12:03:56.194Z",
+    "command": "nx build playground",
+    "startTime": "2025-06-18T13:10:23.031Z",
+    "endTime": "2025-06-18T13:10:41.695Z",
     "inner": false
   },
   "tasks": [
@@ -10,23 +10,23 @@
       "taskId": "ngfire:build:production",
       "target": "build",
       "projectName": "ngfire",
-      "hash": "1172215572971103076",
-      "startTime": "2025-06-18T12:03:52.341Z",
-      "endTime": "2025-06-18T12:03:55.194Z",
+      "hash": "17955155618627181641",
+      "startTime": "2025-06-18T13:10:23.090Z",
+      "endTime": "2025-06-18T13:10:23.097Z",
       "params": "",
-      "cacheStatus": "cache-miss",
+      "cacheStatus": "local-cache-hit",
       "status": 0
     },
     {
-      "taskId": "ngfire-schematics:build",
+      "taskId": "playground:build",
       "target": "build",
-      "projectName": "ngfire-schematics",
-      "hash": "2054237655127816895",
-      "startTime": "2025-06-18T12:03:55.195Z",
-      "endTime": "2025-06-18T12:03:56.190Z",
+      "projectName": "playground",
+      "hash": "14544460695527053432",
+      "startTime": "2025-06-18T13:10:23.102Z",
+      "endTime": "2025-06-18T13:10:41.681Z",
       "params": "",
       "cacheStatus": "cache-miss",
-      "status": 1
+      "status": 0
     }
   ]
 }
