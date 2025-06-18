@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "extends": ["@nrwl/workspace"],
+  "schematics": {
+    "ng-add": {
+      "factory": "./add/index#ngSchematics",
+      "schema": "./add/schema.json",
+      "description": "Add ngfire to the project."
+    }
+  },
+  "generators": {
+    "ng-add": {
+      "factory": "./add/index#nxGenerator",
+      "schema": "./add/schema.json",
+      "description": "Add ngfire to the project"
+    }
+  }
+}

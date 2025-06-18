@@ -1,5 +1,12 @@
-import type { Target, OrderBy, FieldFilter } from '@firebase/firestore/dist/firestore/src/core/target';
-import type { Value, ArrayValue, MapValue, Timestamp, LatLng } from '@firebase/firestore/dist/firestore/src/protos/firestore_proto_api';
+// Note: These types are internal to Firebase and may change. Consider alternative approaches.
+type Target = any;
+type OrderBy = any;
+type FieldFilter = any;
+type Value = any;
+type ArrayValue = any;
+type MapValue = any;
+type Timestamp = any;
+type LatLng = any;
 import type { Query } from 'firebase/firestore';
 import { exist } from 'ngfire/core';
 
@@ -22,7 +29,7 @@ function stringifyTarget(target: Target): string {
   }
   if (target.filters.length > 0) {
     const fields = target.filters
-    .map(f => stringifyFilter(f as FieldFilter))
+    .map((f: any) => stringifyFilter(f as FieldFilter))
     .join(', ');
     str += `|f:[${fields}]`;
   }
@@ -31,19 +38,19 @@ function stringifyTarget(target: Target): string {
   }
   if (target.orderBy.length > 0) {
     const order = target.orderBy
-    .map(o => stringifyOrderBy(o))
+    .map((o: any) => stringifyOrderBy(o))
     .join(', ');
     str += `|ob:[${order}]`;
   }
   if (target.startAt) {
     str += '|lb:';
     str += target.startAt.inclusive ? 'b:' : 'a:';
-    str += target.startAt.position.map(p => canonifyValue(p)).join(',');
+    str += target.startAt.position.map((p: any) => canonifyValue(p)).join(',');
   }
   if (target.endAt) {
     str += '|ub:';
     str += target.endAt.inclusive ? 'a:' : 'b:';
-    str += target.endAt.position.map(p => canonifyValue(p)).join(',');
+    str += target.endAt.position.map((p: any) => canonifyValue(p)).join(',');
   }
   return str;
 }

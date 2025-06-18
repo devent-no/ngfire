@@ -52,7 +52,7 @@ export function isUpdateCallback<T>(
 
 
 @Injectable({ providedIn: 'root' })
-export abstract class BaseFireAuth<Profile, Roles = undefined> {
+export abstract class BaseFireAuth<Profile, Roles extends Record<string, any> | undefined = undefined> {
   private memoProfile: Record<string, Observable<DocumentSnapshot<Profile>>> = {};
   private platformId = inject(PLATFORM_ID);
   protected getAuth = inject(FIRE_AUTH);
@@ -127,7 +127,7 @@ export abstract class BaseFireAuth<Profile, Roles = undefined> {
    * @note Can be overwritten
    */
   protected selectRoles(user: User): Promise<Roles> | Observable<Roles> {
-    return getCustomClaims<Roles>(user);
+    return getCustomClaims<Roles extends Record<string, any> ? Roles : any>(user) as Promise<Roles>;
   }
 
   /**
@@ -272,7 +272,7 @@ export abstract class BaseFireAuth<Profile, Roles = undefined> {
 
 
 @Injectable({ providedIn: 'root' })
-export abstract class FireAuth<Profile, Roles = undefined> extends BaseFireAuth<Profile, Roles> {
+export abstract class FireAuth<Profile, Roles extends Record<string, any> | undefined = undefined> extends BaseFireAuth<Profile, Roles> {
   protected abstract path: string | undefined;
 
   /**

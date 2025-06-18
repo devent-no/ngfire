@@ -29,7 +29,7 @@ export function readRawWorkspaceJson(tree: Tree) {
 export function getProjectOptions(tree: Tree, projectName?: string): ProjectOptions {
   const workspacePath = getWorkspacePath(tree);
   if (!workspacePath) throw new Error('No workspace found. Should be either "angular.json" or "workspace.json"')
-  const isAngular = workspacePath === '/angular.json';
+  const isAngular = workspacePath === 'angular.json';
   const workspace = readRawWorkspaceJson(tree);
   const project = projectName ? names(projectName).fileName : workspace.defaultProject;
   if (!project) throw new Error('No project provided');

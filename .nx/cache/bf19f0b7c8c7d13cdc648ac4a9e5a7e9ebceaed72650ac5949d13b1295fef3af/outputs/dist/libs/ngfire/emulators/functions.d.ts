@@ -1,0 +1,1 @@
+export declare const functionsEmulator: (host: string, port: number) => (app?: import("@firebase/app").FirebaseApp | undefined, regionOrCustomDomain?: string | undefined) => import("@firebase/functions").Functions;

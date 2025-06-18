@@ -8,9 +8,9 @@ export const FIREBASE_APP = new InjectionToken<FirebaseApp>('Firebase applicatio
     const config = inject(FIREBASE_CONFIG);
     const settings = inject(FIREBASE_APP_SETTINGS, InjectFlags.Optional);
     if (config.app) {
-      return config.app(config.options, settings ?? {});
+      return config.app();
     } else {
-      return initializeApp(config.options, settings ?? {});
+      return initializeApp(config.options, settings ?? undefined);
     }
   },
 });

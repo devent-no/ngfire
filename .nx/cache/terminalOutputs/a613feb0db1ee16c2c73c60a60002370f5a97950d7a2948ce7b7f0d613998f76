@@ -1,0 +1,63 @@
+Building Angular Package
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/core'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/core
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/tokens'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/tokens
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/emulators'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/emulators
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/app'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/app
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/firestore'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/firestore
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/auth'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✖ Compiling with Angular sources in Ivy partial compilation mode.
+
+ >  NX   [96mlibs/ngfire/auth/src/auth.ts[0m:[93m130[0m:[93m28[0m - [91merror[0m[90m TS2344: [0mType 'Roles' does not satisfy the constraint 'Record<string, any>'.
+
+     Type 'Record<string, any> | undefined' is not assignable to type 'Record<string, any>'.
+       Type 'undefined' is not assignable to type 'Record<string, any>'.
+   
+   [7m130[0m     return getCustomClaims<Roles>(user);
+   [7m   [0m [91m                           ~~~~~[0m
+   
+   Pass --verbose to see the stacktrace.
+

@@ -1,0 +1,170 @@
+Building Angular Package
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/core'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/core
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/tokens'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/tokens
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/emulators'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/emulators
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/app'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Generating FESM2020
+✔ Generating FESM2020
+- Generating FESM2015
+✔ Generating FESM2015
+✔ Built ngfire/app
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/firestore'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✖ Compiling with Angular sources in Ivy partial compilation mode.
+
+ >  NX   [96mlibs/ngfire/firestore/src/query.ts[0m:[93m1[0m:[93m23[0m - [91merror[0m[90m TS2459: [0mModule '"@firebase/firestore/dist/firestore/src/core/target"' declares 'OrderBy' locally, but it is not exported.
+
+   
+   [7m1[0m import type { Target, OrderBy, FieldFilter } from '@firebase/firestore/dist/firestore/src/core/target';
+   [7m [0m [91m                      ~~~~~~~[0m
+   
+     [96mnode_modules/@firebase/firestore/dist/firestore/src/core/target.d.ts[0m:[93m22[0m:[93m10[0m
+       [7m22[0m import { OrderBy } from './order_by';
+       [7m  [0m [96m         ~~~~~~~[0m
+       'OrderBy' is declared here.
+   [96mlibs/ngfire/firestore/src/query.ts[0m:[93m1[0m:[93m32[0m - [91merror[0m[90m TS2459: [0mModule '"@firebase/firestore/dist/firestore/src/core/target"' declares 'FieldFilter' locally, but it is not exported.
+   
+   [7m1[0m import type { Target, OrderBy, FieldFilter } from '@firebase/firestore/dist/firestore/src/core/target';
+   [7m [0m [91m                               ~~~~~~~~~~~[0m
+   
+     [96mnode_modules/@firebase/firestore/dist/firestore/src/core/target.d.ts[0m:[93m21[0m:[93m18[0m
+       [7m21[0m import { Filter, FieldFilter } from './filter';
+       [7m  [0m [96m                 ~~~~~~~~~~~[0m
+       'FieldFilter' is declared here.
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m1[0m:[93m66[0m - [91merror[0m[90m TS2305: [0mModule '"@angular/core"' has no exported member 'makeStateKey'.
+   
+   [7m1[0m import { inject, Injectable, InjectFlags, Injector, PLATFORM_ID, makeStateKey, TransferState } from "@angular/core";
+   [7m [0m [91m                                                                 ~~~~~~~~~~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m1[0m:[93m80[0m - [91merror[0m[90m TS2305: [0mModule '"@angular/core"' has no exported member 'TransferState'.
+   
+   [7m1[0m import { inject, Injectable, InjectFlags, Injector, PLATFORM_ID, makeStateKey, TransferState } from "@angular/core";
+   [7m [0m [91m                                                                               ~~~~~~~~~~~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m38[0m:[93m34[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Query<E>' is not assignable to parameter of type 'Query<DocumentData>'.
+     Types of property 'converter' are incompatible.
+       Type 'FirestoreDataConverter<E> | null' is not assignable to type 'FirestoreDataConverter<DocumentData> | null'.
+         Type 'FirestoreDataConverter<E>' is not assignable to type 'FirestoreDataConverter<DocumentData>'.
+           Types of property 'toFirestore' are incompatible.
+             Type '{ (modelObject: WithFieldValue<E>): DocumentData; (modelObject: PartialWithFieldValue<E>, options: SetOptions): DocumentData; }' is not assignable to type '{ (modelObject: WithFieldValue<DocumentData>): DocumentData; (modelObject: PartialWithFieldValue<DocumentData>, options: SetOptions): DocumentData; }'.
+               Types of parameters 'modelObject' and 'modelObject' are incompatible.
+                 Type 'WithFieldValue<DocumentData>' is not assignable to type 'WithFieldValue<E>'.
+                   Type 'DocumentData' is not assignable to type 'WithFieldValue<E>'.
+                     Type 'DocumentData' is not assignable to type 'E extends Primitive ? E : E extends {} ? { [K in keyof E]: FieldValue | WithFieldValue<E[K]>; } : never'.
+   
+   [7m38[0m       const key = stringifyQuery(ref);
+   [7m  [0m [91m                                 ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m51[0m:[93m34[0m - [91merror[0m[90m TS2345: [0mArgument of type 'CollectionReference<E> | Query<E>' is not assignable to parameter of type 'Query<DocumentData>'.
+     Type 'CollectionReference<E>' is not assignable to type 'Query<DocumentData>'.
+       Types of property 'converter' are incompatible.
+         Type 'FirestoreDataConverter<E> | null' is not assignable to type 'FirestoreDataConverter<DocumentData> | null'.
+           Type 'FirestoreDataConverter<E>' is not assignable to type 'FirestoreDataConverter<DocumentData>'.
+             Types of property 'toFirestore' are incompatible.
+               Type '{ (modelObject: WithFieldValue<E>): DocumentData; (modelObject: PartialWithFieldValue<E>, options: SetOptions): DocumentData; }' is not assignable to type '{ (modelObject: WithFieldValue<DocumentData>): DocumentData; (modelObject: PartialWithFieldValue<DocumentData>, options: SetOptions): DocumentData; }'.
+                 Types of parameters 'modelObject' and 'modelObject' are incompatible.
+                   Type 'WithFieldValue<DocumentData>' is not assignable to type 'WithFieldValue<E>'.
+                     Type 'DocumentData' is not assignable to type 'WithFieldValue<E>'.
+                       Type 'DocumentData' is not assignable to type 'E extends Primitive ? E : E extends {} ? { [K in keyof E]: FieldValue | WithFieldValue<E[K]>; } : never'.
+   
+   [7m51[0m       const key = stringifyQuery(ref);
+   [7m  [0m [91m                                 ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m67[0m:[93m47[0m - [91merror[0m[90m TS2345: [0mArgument of type 'CollectionReference<E> | Query<E>' is not assignable to parameter of type 'Query<DocumentData>'.
+     Type 'CollectionReference<E>' is not assignable to type 'Query<DocumentData>'.
+       Types of property 'converter' are incompatible.
+         Type 'FirestoreDataConverter<E> | null' is not assignable to type 'FirestoreDataConverter<DocumentData> | null'.
+           Type 'FirestoreDataConverter<E>' is not assignable to type 'FirestoreDataConverter<DocumentData>'.
+             Types of property 'toFirestore' are incompatible.
+               Type '{ (modelObject: WithFieldValue<E>): DocumentData; (modelObject: PartialWithFieldValue<E>, options: SetOptions): DocumentData; }' is not assignable to type '{ (modelObject: WithFieldValue<DocumentData>): DocumentData; (modelObject: PartialWithFieldValue<DocumentData>, options: SetOptions): DocumentData; }'.
+                 Types of parameters 'modelObject' and 'modelObject' are incompatible.
+                   Type 'WithFieldValue<DocumentData>' is not assignable to type 'WithFieldValue<E>'.
+                     Type 'DocumentData' is not assignable to type 'WithFieldValue<E>'.
+                       Type 'DocumentData' is not assignable to type 'E extends Primitive ? E : E extends {} ? { [K in keyof E]: FieldValue | WithFieldValue<E[K]>; } : never'.
+   
+   [7m67[0m     const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
+   [7m  [0m [91m                                              ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m84[0m:[93m47[0m - [91merror[0m[90m TS2345: [0mArgument of type 'CollectionReference<E> | Query<E>' is not assignable to parameter of type 'Query<DocumentData>'.
+     Type 'CollectionReference<E>' is not assignable to type 'Query<DocumentData>'.
+       Types of property 'converter' are incompatible.
+         Type 'FirestoreDataConverter<E> | null' is not assignable to type 'FirestoreDataConverter<DocumentData> | null'.
+           Type 'FirestoreDataConverter<E>' is not assignable to type 'FirestoreDataConverter<DocumentData>'.
+             Types of property 'toFirestore' are incompatible.
+               Type '{ (modelObject: WithFieldValue<E>): DocumentData; (modelObject: PartialWithFieldValue<E>, options: SetOptions): DocumentData; }' is not assignable to type '{ (modelObject: WithFieldValue<DocumentData>): DocumentData; (modelObject: PartialWithFieldValue<DocumentData>, options: SetOptions): DocumentData; }'.
+                 Types of parameters 'modelObject' and 'modelObject' are incompatible.
+                   Type 'WithFieldValue<DocumentData>' is not assignable to type 'WithFieldValue<E>'.
+                     Type 'DocumentData' is not assignable to type 'WithFieldValue<E>'.
+                       Type 'DocumentData' is not assignable to type 'E extends Primitive ? E : E extends {} ? { [K in keyof E]: FieldValue | WithFieldValue<E[K]>; } : never'.
+   
+   [7m84[0m     const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
+   [7m  [0m [91m                                              ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m86[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'hasKey' does not exist on type '{}'.
+   
+   [7m86[0m     if (!this.transferState.hasKey(stateKey)) return;
+   [7m  [0m [91m                            ~~~~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m87[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'get' does not exist on type '{}'.
+   
+   [7m87[0m     const value = this.transferState.get(stateKey, undefined);
+   [7m  [0m [91m                                     ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m88[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'remove' does not exist on type '{}'.
+   
+   [7m88[0m     this.transferState.remove(stateKey);
+   [7m  [0m [91m                       ~~~~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m102[0m:[93m49[0m - [91merror[0m[90m TS2345: [0mArgument of type 'CollectionReference<E> | Query<E>' is not assignable to parameter of type 'Query<DocumentData>'.
+     Type 'CollectionReference<E>' is not assignable to type 'Query<DocumentData>'.
+       Types of property 'converter' are incompatible.
+         Type 'FirestoreDataConverter<E> | null' is not assignable to type 'FirestoreDataConverter<DocumentData> | null'.
+           Type 'FirestoreDataConverter<E>' is not assignable to type 'FirestoreDataConverter<DocumentData>'.
+             Types of property 'toFirestore' are incompatible.
+               Type '{ (modelObject: WithFieldValue<E>): DocumentData; (modelObject: PartialWithFieldValue<E>, options: SetOptions): DocumentData; }' is not assignable to type '{ (modelObject: WithFieldValue<DocumentData>): DocumentData; (modelObject: PartialWithFieldValue<DocumentData>, options: SetOptions): DocumentData; }'.
+                 Types of parameters 'modelObject' and 'modelObject' are incompatible.
+                   Type 'WithFieldValue<DocumentData>' is not assignable to type 'WithFieldValue<E>'.
+                     Type 'DocumentData' is not assignable to type 'WithFieldValue<E>'.
+                       Type 'DocumentData' is not assignable to type 'E extends Primitive ? E : E extends {} ? { [K in keyof E]: FieldValue | WithFieldValue<E[K]>; } : never'.
+   
+   [7m102[0m       const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
+   [7m   [0m [91m                                                ~~~[0m
+   [96mlibs/ngfire/firestore/src/firestore.ts[0m:[93m103[0m:[93m26[0m - [91merror[0m[90m TS2339: [0mProperty 'set' does not exist on type '{}'.
+   
+   [7m103[0m       this.transferState.set(makeStateKey<E>(key), value);
+   [7m   [0m [91m                         ~~~[0m
+   [96mlibs/ngfire/firestore/src/sub-collection.ts[0m:[93m10[0m:[93m67[0m - [91merror[0m[90m TS2344: [0mType 'E' does not satisfy the constraint 'DocumentData'.
+   
+   [7m10[0m export abstract class FireSubCollection<E> extends FireCollection<E> {
+   [7m  [0m [91m                                                                  ~[0m
+   
+     [96mlibs/ngfire/firestore/src/sub-collection.ts[0m:[93m10[0m:[93m41[0m
+       [7m10[0m export abstract class FireSubCollection<E> extends FireCollection<E> {
+       [7m  [0m [96m                                        ~[0m
+       This type parameter might need an `extends DocumentData` constraint.
+   
+   Pass --verbose to see the stacktrace.
+

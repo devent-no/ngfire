@@ -1,0 +1,54 @@
+Building Angular Package
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/core'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/core
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/tokens'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/tokens
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/emulators'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✔ Compiling with Angular sources in Ivy partial compilation mode.
+- Writing FESM bundles
+✔ Writing FESM bundles
+✔ Built ngfire/emulators
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/app'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✖ Compiling with Angular sources in Ivy partial compilation mode.
+
+ >  NX   [96mlibs/ngfire/app/src/index.ts[0m:[93m11[0m:[93m25[0m - [91merror[0m[90m TS2554: [0mExpected 0 arguments, but got 2.
+
+   
+   [7m11[0m       return config.app(config.options, settings);
+   [7m  [0m [91m                        ~~~~~~~~~~~~~~~~~~~~~~~~[0m
+   [96mlibs/ngfire/app/src/index.ts[0m:[93m13[0m:[93m44[0m - [91merror[0m[90m TS2769: [0mNo overload matches this call.
+     Overload 1 of 3, '(options: FirebaseOptions, name?: string | undefined): FirebaseApp', gave the following error.
+       Argument of type 'FirebaseAppSettings | null' is not assignable to parameter of type 'string | undefined'.
+         Type 'null' is not assignable to type 'string | undefined'.
+     Overload 2 of 3, '(options: FirebaseOptions, config?: FirebaseAppSettings | undefined): FirebaseApp', gave the following error.
+       Argument of type 'FirebaseAppSettings | null' is not assignable to parameter of type 'FirebaseAppSettings | undefined'.
+         Type 'null' is not assignable to type 'FirebaseAppSettings | undefined'.
+   
+   [7m13[0m       return initializeApp(config.options, settings);
+   [7m  [0m [91m                                           ~~~~~~~~[0m
+   
+   
+   Pass --verbose to see the stacktrace.
+

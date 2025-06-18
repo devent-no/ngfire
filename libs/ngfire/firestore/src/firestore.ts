@@ -1,4 +1,5 @@
-import { inject, Injectable, InjectFlags, Injector, PLATFORM_ID, makeStateKey, TransferState } from "@angular/core";
+import { inject, Injectable, InjectFlags, Injector, PLATFORM_ID } from "@angular/core";
+import { makeStateKey, TransferState } from "@angular/platform-browser";
 import { collection, doc, DocumentData, DocumentSnapshot, query, queryEqual, QuerySnapshot, runTransaction, writeBatch } from 'firebase/firestore';
 import type { Transaction, CollectionReference, DocumentReference, Query, QueryConstraint } from 'firebase/firestore';
 import { FIRESTORE } from "./tokens";
@@ -35,7 +36,7 @@ export class FirestoreService {
       this.state.set(ref.path, snap);
     } else if (isQuery(ref)) {
       (snap as QuerySnapshot<E>).forEach(doc => this.state.set(doc.ref.path, doc));
-      const key = stringifyQuery(ref);
+      const key = stringifyQuery(ref as any);
       this.state.set(key, snap);
     } else {
       this.state.set(ref.path, snap);
@@ -48,7 +49,7 @@ export class FirestoreService {
   getState<E>(ref: DocumentReference<E> | CollectionReference<E> | Query<E>): Snapshot<E> | undefined
   getState<E>(ref: DocumentReference<E> | CollectionReference<E> | Query<E>): Snapshot<E> | undefined {
     if (isQuery(ref)) {
-      const key = stringifyQuery(ref);
+      const key = stringifyQuery(ref as any);
       return this.state.get(key) as Snapshot<E>;
     } else {
       return this.state.get(ref.path) as Snapshot<E>;
@@ -64,7 +65,7 @@ export class FirestoreService {
     ref: DocumentReference<E> | CollectionReference<E> | Query<E>,
     delay?: number
   ): Observable<Snapshot<E>> {
-    const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
+    const key = isQuery(ref) ? stringifyQuery(ref as any) : ref.path;
     if (!this.memoryRef[key]) {
       this.memoryRef[key] = fromRef(ref as any).pipe(shareWithDelay(delay));
     }
@@ -81,7 +82,7 @@ export class FirestoreService {
   getTransfer<E>(ref: DocumentReference<E> | CollectionReference<E> | Query<E>): E[] | E | undefined
   getTransfer<E>(ref: DocumentReference<E> | CollectionReference<E> | Query<E>) {
     if (!this.transferState || !isPlatformBrowser(this.plateformId)) return;
-    const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
+    const key = isQuery(ref) ? stringifyQuery(ref as any) : ref.path;
     const stateKey = makeStateKey<E>(key);
     if (!this.transferState.hasKey(stateKey)) return;
     const value = this.transferState.get(stateKey, undefined);
@@ -99,8 +100,8 @@ export class FirestoreService {
     if (Array.isArray(ref) && Array.isArray(value)) {
       ref.forEach((reference, i) => this.setTransfer(reference, value[i]));
     } else if (!Array.isArray(ref)) {
-      const key = isQuery(ref) ? stringifyQuery(ref) : ref.path;
-      this.transferState.set(makeStateKey<E>(key), value);
+      const key = isQuery(ref) ? stringifyQuery(ref as any) : ref.path;
+      this.transferState.set(makeStateKey<any>(key), value);
     }
   }
 

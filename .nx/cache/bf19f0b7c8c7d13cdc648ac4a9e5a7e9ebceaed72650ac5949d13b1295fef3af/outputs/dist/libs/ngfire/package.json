@@ -1,0 +1,120 @@
+{
+  "name": "ngfire",
+  "version": "0.0.53",
+  "homepage": "https://github.com/dappsnation/ngfire",
+  "peerDependencies": {
+    "@angular/common": ">17.3.12",
+    "@angular/core": ">17.3.12",
+    "@angular/platform-browser": ">17.3.12",
+    "@nrwl/devkit": ">13.0.0",
+    "firebase": ">9.0.0",
+    "rxjs": ">7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
+  "module": "fesm2015/ngfire.mjs",
+  "es2020": "fesm2020/ngfire.mjs",
+  "esm2020": "esm2020/ngfire.mjs",
+  "fesm2020": "fesm2020/ngfire.mjs",
+  "fesm2015": "fesm2015/ngfire.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/ngfire.mjs",
+      "es2020": "./fesm2020/ngfire.mjs",
+      "es2015": "./fesm2015/ngfire.mjs",
+      "node": "./fesm2015/ngfire.mjs",
+      "default": "./fesm2020/ngfire.mjs"
+    },
+    "./analytics": {
+      "types": "./analytics/index.d.ts",
+      "esm2020": "./esm2020/analytics/ngfire-analytics.mjs",
+      "es2020": "./fesm2020/ngfire-analytics.mjs",
+      "es2015": "./fesm2015/ngfire-analytics.mjs",
+      "node": "./fesm2015/ngfire-analytics.mjs",
+      "default": "./fesm2020/ngfire-analytics.mjs"
+    },
+    "./app": {
+      "types": "./app/index.d.ts",
+      "esm2020": "./esm2020/app/ngfire-app.mjs",
+      "es2020": "./fesm2020/ngfire-app.mjs",
+      "es2015": "./fesm2015/ngfire-app.mjs",
+      "node": "./fesm2015/ngfire-app.mjs",
+      "default": "./fesm2020/ngfire-app.mjs"
+    },
+    "./auth": {
+      "types": "./auth/index.d.ts",
+      "esm2020": "./esm2020/auth/ngfire-auth.mjs",
+      "es2020": "./fesm2020/ngfire-auth.mjs",
+      "es2015": "./fesm2015/ngfire-auth.mjs",
+      "node": "./fesm2015/ngfire-auth.mjs",
+      "default": "./fesm2020/ngfire-auth.mjs"
+    },
+    "./core": {
+      "types": "./core/index.d.ts",
+      "esm2020": "./esm2020/core/ngfire-core.mjs",
+      "es2020": "./fesm2020/ngfire-core.mjs",
+      "es2015": "./fesm2015/ngfire-core.mjs",
+      "node": "./fesm2015/ngfire-core.mjs",
+      "default": "./fesm2020/ngfire-core.mjs"
+    },
+    "./database": {
+      "types": "./database/index.d.ts",
+      "esm2020": "./esm2020/database/ngfire-database.mjs",
+      "es2020": "./fesm2020/ngfire-database.mjs",
+      "es2015": "./fesm2015/ngfire-database.mjs",
+      "node": "./fesm2015/ngfire-database.mjs",
+      "default": "./fesm2020/ngfire-database.mjs"
+    },
+    "./emulators": {
+      "types": "./emulators/index.d.ts",
+      "esm2020": "./esm2020/emulators/ngfire-emulators.mjs",
+      "es2020": "./fesm2020/ngfire-emulators.mjs",
+      "es2015": "./fesm2015/ngfire-emulators.mjs",
+      "node": "./fesm2015/ngfire-emulators.mjs",
+      "default": "./fesm2020/ngfire-emulators.mjs"
+    },
+    "./firestore": {
+      "types": "./firestore/index.d.ts",
+      "esm2020": "./esm2020/firestore/ngfire-firestore.mjs",
+      "es2020": "./fesm2020/ngfire-firestore.mjs",
+      "es2015": "./fesm2015/ngfire-firestore.mjs",
+      "node": "./fesm2015/ngfire-firestore.mjs",
+      "default": "./fesm2020/ngfire-firestore.mjs"
+    },
+    "./functions": {
+      "types": "./functions/index.d.ts",
+      "esm2020": "./esm2020/functions/ngfire-functions.mjs",
+      "es2020": "./fesm2020/ngfire-functions.mjs",
+      "es2015": "./fesm2015/ngfire-functions.mjs",
+      "node": "./fesm2015/ngfire-functions.mjs",
+      "default": "./fesm2020/ngfire-functions.mjs"
+    },
+    "./storage": {
+      "types": "./storage/index.d.ts",
+      "esm2020": "./esm2020/storage/ngfire-storage.mjs",
+      "es2020": "./fesm2020/ngfire-storage.mjs",
+      "es2015": "./fesm2015/ngfire-storage.mjs",
+      "node": "./fesm2015/ngfire-storage.mjs",
+      "default": "./fesm2020/ngfire-storage.mjs"
+    },
+    "./tokens": {
+      "types": "./tokens/index.d.ts",
+      "esm2020": "./esm2020/tokens/ngfire-tokens.mjs",
+      "es2020": "./fesm2020/ngfire-tokens.mjs",
+      "es2015": "./fesm2015/ngfire-tokens.mjs",
+      "node": "./fesm2015/ngfire-tokens.mjs",
+      "default": "./fesm2020/ngfire-tokens.mjs"
+    }
+  },
+  "sideEffects": false
+}
