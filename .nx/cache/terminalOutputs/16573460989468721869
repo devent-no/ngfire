@@ -1,0 +1,22 @@
+Building Angular Package
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/core'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✖ Compiling with Angular sources in Ivy partial compilation mode.
+
+ >  NX   The "path" argument must be of type string. Received undefined
+
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at Object.dirname (node:path:1364:5)
+    at /Users/kpa005/devent/dev/ngfire/node_modules/@nx/angular/src/executors/package/ng-packagr-adjustments/ng-package/entry-point/compile-ngc.transform.js:52:30
+    at /Users/kpa005/devent/dev/ngfire/node_modules/ng-packagr/lib/graph/transform.js:7:35
+    at /Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/operators/switchMap.js:17:35
+    at OperatorSubscriber._this._next (/Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/operators/OperatorSubscriber.js:33:21)
+    at Subscriber.next (/Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/Subscriber.js:51:18)
+    at /Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/operators/switchMap.js:17:192
+    at OperatorSubscriber._this._next (/Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/operators/OperatorSubscriber.js:33:21)
+    at Subscriber.next (/Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/Subscriber.js:51:18)
+    at /Users/kpa005/devent/dev/ngfire/node_modules/rxjs/dist/cjs/internal/observable/innerFrom.js:120:28

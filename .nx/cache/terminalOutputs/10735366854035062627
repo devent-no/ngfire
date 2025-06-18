@@ -1,0 +1,12 @@
+Building Angular Package
+
+------------------------------------------------------------------------------
+Building entry point 'ngfire/core'
+------------------------------------------------------------------------------
+- Compiling with Angular sources in Ivy partial compilation mode.
+✖ Compiling with Angular sources in Ivy partial compilation mode.
+
+ >  NX   The "path" argument must be of type string. Received undefined
+
+   Pass --verbose to see the stacktrace.
+

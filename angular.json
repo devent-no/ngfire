@@ -10,7 +10,7 @@
       "architect": {
         "build": {
           "builder": "@nrwl/angular:package",
-          "outputs": ["dist/libs/ngfire"],
+          "outputs": ["{workspaceRoot}/dist/libs/ngfire"],
           "options": {
             "project": "libs/ngfire/ng-package.json"
           },
@@ -33,7 +33,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ngfire"],
+          "outputs": ["{workspaceRoot}/coverage/libs/ngfire"],
           "options": {
             "jestConfig": "libs/ngfire/jest.config.ts",
             "passWithNoTests": true
@@ -190,7 +190,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/playground"],
+          "outputs": ["{workspaceRoot}/coverage/apps/playground"],
           "options": {
             "jestConfig": "apps/playground/jest.config.ts",
             "passWithNoTests": true
@@ -260,7 +260,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/webworker"],
+          "outputs": ["{workspaceRoot}/coverage/libs/webworker"],
           "options": {
             "jestConfig": "libs/webworker/jest.config.ts",
             "passWithNoTests": true
