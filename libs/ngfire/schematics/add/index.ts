@@ -1,5 +1,5 @@
 import { SchemaOptions } from './schema';
-import { Tree, addDependenciesToPackageJson, convertNxGenerator, names, offsetFromRoot, formatFiles, generateFiles } from '@nrwl/devkit';
+import { Tree, addDependenciesToPackageJson, convertNxGenerator, names, offsetFromRoot, formatFiles, generateFiles } from '@nx/devkit';
 import { getProjectOptions, ProjectOptions } from './utils';
 import { join } from 'path';
 

@@ -9,8 +9,8 @@
     "declarationMap": false,
     "inlineSources": false,
     "sourceMap": false,
-    "types": [],
-    "lib": []
+    "types": ["node"],
+    "lib": ["es2020"]
   },
   "include": [
     "schematics/index.ts",

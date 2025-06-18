@@ -1,8 +1,8 @@
 {
   "run": {
-    "command": "nx build ngfire --verbose",
-    "startTime": "2025-06-18T11:42:56.266Z",
-    "endTime": "2025-06-18T11:42:57.343Z",
+    "command": "nx build ngfire-schematics",
+    "startTime": "2025-06-18T12:03:52.320Z",
+    "endTime": "2025-06-18T12:03:56.194Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,20 @@
       "taskId": "ngfire:build:production",
       "target": "build",
       "projectName": "ngfire",
-      "hash": "16573460989468721869",
-      "startTime": "2025-06-18T11:42:56.269Z",
-      "endTime": "2025-06-18T11:42:57.343Z",
+      "hash": "1172215572971103076",
+      "startTime": "2025-06-18T12:03:52.341Z",
+      "endTime": "2025-06-18T12:03:55.194Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "ngfire-schematics:build",
+      "target": "build",
+      "projectName": "ngfire-schematics",
+      "hash": "2054237655127816895",
+      "startTime": "2025-06-18T12:03:55.195Z",
+      "endTime": "2025-06-18T12:03:56.190Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

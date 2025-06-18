@@ -1,5 +1,5 @@
-import { getWorkspacePath, joinPathFragments, names, readJson, getWorkspaceLayout, Tree } from '@nrwl/devkit';
-import type { Workspace, TargetConfiguration, ProjectConfiguration as NxProjectConfig } from '@nrwl/devkit';
+import { getWorkspacePath, joinPathFragments, names, readJson, getWorkspaceLayout, Tree } from '@nx/devkit';
+import type { Workspace, TargetConfiguration, ProjectConfiguration as NxProjectConfig } from '@nx/devkit';
 
 export interface BuilderConfiguration extends Omit<TargetConfiguration, 'executor'> {
   executor?: string;
