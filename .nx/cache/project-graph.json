@@ -1,0 +1,375 @@
+{
+  "nodes": {
+    "ngfire-schematics": {
+      "name": "ngfire-schematics",
+      "type": "lib",
+      "data": {
+        "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "root": "libs/ngfire/schematics",
+        "sourceRoot": "libs/ngfire/schematics",
+        "prefix": "ngfire",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "executor": "@nrwl/js:tsc",
+            "options": {
+              "outputPath": "dist/libs/ngfire/schematics",
+              "tsConfig": "libs/ngfire/tsconfig.schematics.json",
+              "main": "libs/ngfire/schematics/index.ts",
+              "assets": [
+                {
+                  "input": "libs/ngfire/schematics",
+                  "glob": "**/files/**/*",
+                  "output": "/"
+                },
+                {
+                  "input": "libs/ngfire/schematics",
+                  "glob": "**/*.json",
+                  "ignore": [],
+                  "output": "/"
+                }
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [
+          "schematics"
+        ],
+        "implicitDependencies": [
+          "ngfire"
+        ],
+        "name": "ngfire-schematics"
+      }
+    },
+    "playground-e2e": {
+      "name": "playground-e2e",
+      "type": "e2e",
+      "data": {
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "root": "apps/playground-e2e",
+        "sourceRoot": "apps/playground-e2e/src",
+        "projectType": "application",
+        "targets": {
+          "e2e": {
+            "executor": "@nrwl/cypress:cypress",
+            "options": {
+              "cypressConfig": "apps/playground-e2e/cypress.json",
+              "tsConfig": "apps/playground-e2e/tsconfig.e2e.json",
+              "devServerTarget": "playground:serve"
+            },
+            "configurations": {
+              "production": {
+                "devServerTarget": "playground:serve:production"
+              }
+            }
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "apps/playground-e2e/**/*.{js,ts}"
+              ]
+            },
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "configurations": {}
+          }
+        },
+        "tags": [],
+        "implicitDependencies": [
+          "playground"
+        ],
+        "name": "playground-e2e"
+      }
+    },
+    "playground": {
+      "name": "playground",
+      "type": "app",
+      "data": {
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "root": "apps/playground",
+        "sourceRoot": "apps/playground/src",
+        "prefix": "ngfire",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "executor": "@angular-devkit/build-angular:browser",
+            "options": {
+              "outputPath": "dist/apps/playground",
+              "index": "apps/playground/src/index.html",
+              "main": "apps/playground/src/main.ts",
+              "polyfills": "apps/playground/src/polyfills.ts",
+              "tsConfig": "apps/playground/tsconfig.app.json",
+              "assets": [
+                "apps/playground/src/favicon.ico",
+                "apps/playground/src/assets"
+              ],
+              "styles": [
+                "apps/playground/src/styles.scss"
+              ],
+              "scripts": [],
+              "webWorkerTsConfig": "apps/playground/tsconfig.worker.json",
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": false,
+              "sourceMap": true,
+              "optimization": false,
+              "namedChunks": true
+            },
+            "configurations": {
+              "production": {
+                "fileReplacements": [
+                  {
+                    "replace": "apps/playground/src/environments/environment.ts",
+                    "with": "apps/playground/src/environments/environment.prod.ts"
+                  }
+                ],
+                "optimization": true,
+                "outputHashing": "all",
+                "extractLicenses": true,
+                "vendorChunk": false,
+                "buildOptimizer": true,
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "2mb",
+                    "maximumError": "5mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "6kb",
+                    "maximumError": "10kb"
+                  }
+                ]
+              }
+            }
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "browserTarget": "playground:build"
+            },
+            "configurations": {
+              "production": {
+                "browserTarget": "playground:build:production"
+              }
+            }
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "playground:build"
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "apps/playground/src/**/*.ts",
+                "apps/playground/src/**/*.html"
+              ],
+              "tsConfig": [
+                "apps/playground/tsconfig.worker.json"
+              ]
+            },
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+              "coverage/apps/playground"
+            ],
+            "options": {
+              "jestConfig": "apps/playground/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [],
+        "name": "playground",
+        "implicitDependencies": []
+      }
+    },
+    "webworker": {
+      "name": "webworker",
+      "type": "lib",
+      "data": {
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "root": "libs/webworker",
+        "sourceRoot": "libs/webworker/src",
+        "prefix": "ngfire",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "executor": "@nrwl/angular:package",
+            "options": {
+              "tsConfig": "libs/webworker/tsconfig.lib.json",
+              "project": "libs/webworker/ng-package.json"
+            },
+            "configurations": {
+              "production": {
+                "tsConfig": "libs/webworker/tsconfig.lib.prod.json"
+              }
+            }
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "libs/webworker/src/**/*.ts",
+                "libs/webworker/src/**/*.html"
+              ]
+            },
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+              "coverage/libs/webworker"
+            ],
+            "options": {
+              "jestConfig": "libs/webworker/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [],
+        "name": "webworker",
+        "implicitDependencies": []
+      }
+    },
+    "ngfire": {
+      "name": "ngfire",
+      "type": "lib",
+      "data": {
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "root": "libs/ngfire",
+        "sourceRoot": "libs/ngfire/src",
+        "prefix": "ngfire",
+        "targets": {
+          "build": {
+            "dependsOn": [
+              "^build"
+            ],
+            "executor": "@nrwl/angular:package",
+            "outputs": [
+              "dist/libs/ngfire"
+            ],
+            "options": {
+              "project": "libs/ngfire/ng-package.json"
+            },
+            "configurations": {
+              "production": {
+                "tsConfig": "libs/ngfire/tsconfig.lib.prod.json"
+              },
+              "development": {
+                "tsConfig": "libs/ngfire/tsconfig.lib.json"
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "publish": {
+            "executor": "@nrwl/workspace:run-commands",
+            "options": {
+              "command": "npm publish",
+              "cwd": "dist/libs/ngfire"
+            },
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": [
+              "coverage/libs/ngfire"
+            ],
+            "options": {
+              "jestConfig": "libs/ngfire/jest.config.ts",
+              "passWithNoTests": true
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+              "lintFilePatterns": [
+                "libs/ngfire/src/**/*.ts",
+                "libs/ngfire/src/**/*.html",
+                "libs/ngfire/tokens/**/*.ts",
+                "libs/ngfire/tokens/**/*.html",
+                "libs/ngfire/app/**/*.ts",
+                "libs/ngfire/app/**/*.html",
+                "libs/ngfire/firestore/**/*.ts",
+                "libs/ngfire/firestore/**/*.html",
+                "libs/ngfire/auth/**/*.ts",
+                "libs/ngfire/auth/**/*.html",
+                "libs/ngfire/core/**/*.ts",
+                "libs/ngfire/core/**/*.html",
+                "libs/ngfire/analytics/**/*.ts",
+                "libs/ngfire/analytics/**/*.html",
+                "libs/ngfire/database/**/*.ts",
+                "libs/ngfire/database/**/*.html",
+                "libs/ngfire/functions/**/*.ts",
+                "libs/ngfire/functions/**/*.html",
+                "libs/ngfire/storage/**/*.ts",
+                "libs/ngfire/storage/**/*.html",
+                "libs/ngfire/emulators/**/*.ts",
+                "libs/ngfire/emulators/**/*.html"
+              ]
+            },
+            "configurations": {}
+          }
+        },
+        "tags": [],
+        "name": "ngfire",
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "ngfire-schematics": [
+      {
+        "source": "ngfire-schematics",
+        "target": "ngfire",
+        "type": "implicit"
+      }
+    ],
+    "playground-e2e": [
+      {
+        "source": "playground-e2e",
+        "target": "playground",
+        "type": "implicit"
+      }
+    ],
+    "playground": [
+      {
+        "source": "playground",
+        "target": "ngfire",
+        "type": "static"
+      }
+    ],
+    "webworker": [],
+    "ngfire": []
+  },
+  "version": "6.0"
+}
