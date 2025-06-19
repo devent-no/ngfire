@@ -1,4 +1,4 @@
-import { getWorkspacePath, joinPathFragments, names, readJson, getWorkspaceLayout, Tree } from '@nx/devkit';
+import { joinPathFragments, names, readJson, getWorkspaceLayout, Tree } from '@nx/devkit';
 import type { Workspace, TargetConfiguration, ProjectConfiguration as NxProjectConfig } from '@nx/devkit';
 
 export interface BuilderConfiguration extends Omit<TargetConfiguration, 'executor'> {
@@ -17,6 +17,16 @@ export interface ProjectOptions {
   projectRoot: string;
   projectConfig?: ProjectConfig;
   projectConfigLocation?: string;
+}
+
+function getWorkspacePath(tree: Tree): string | null {
+  if (tree.exists('angular.json')) {
+    return 'angular.json';
+  }
+  if (tree.exists('workspace.json')) {
+    return 'workspace.json';
+  }
+  return null;
 }
 
 export function readRawWorkspaceJson(tree: Tree) {
