@@ -3,12 +3,12 @@
   "version": "0.0.53",
   "homepage": "https://github.com/dappsnation/ngfire",
   "peerDependencies": {
-    "@angular/common": ">17.3.12",
-    "@angular/core": ">17.3.12",
-    "@angular/platform-browser": ">17.3.12",
-    "@nrwl/devkit": ">13.0.0",
-    "firebase": ">9.0.0",
-    "rxjs": ">7.0.0"
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0", 
+    "@angular/platform-browser": ">=16.0.0",
+    "@nx/devkit": ">=16.0.0",
+    "firebase": ">=9.8.0 <11.0.0",
+    "rxjs": ">=7.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
