@@ -1,0 +1,37 @@
+import { Observable } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
+export function fromTask(task) {
+    return new Observable((subscriber) => {
+        const progress = (snap) => subscriber.next(snap);
+        const error = (e) => subscriber.error(e);
+        const complete = () => subscriber.complete();
+        // emit the current state of the task
+        progress(task.snapshot);
+        // emit progression of the task
+        const unsubscribeFromOnStateChanged = task.on('state_changed', progress);
+        // use the promise form of task, to get the last success snapshot
+        task.then((snapshot) => {
+            progress(snapshot);
+            setTimeout(() => complete(), 0);
+        }, (e) => {
+            progress(task.snapshot);
+            setTimeout(() => error(e), 0);
+        });
+        // the unsubscribe method returns by storage isn't typed in the
+        // way rxjs expects, Function vs () => void, so wrap it
+        return function unsubscribe() {
+            unsubscribeFromOnStateChanged();
+        };
+    }).pipe(
+    // since we're emitting first the current snapshot and then progression
+    // it's possible that we could double fire synchronously; namely when in
+    // a terminal state (success, error, canceled). Debounce to address.
+    debounceTime(0));
+}
+export function percentage(task) {
+    return fromTask(task).pipe(map((snapshot) => ({
+        progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100,
+        snapshot,
+    })));
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib3BlcmF0b3JzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vbGlicy9uZ2ZpcmUvc3RvcmFnZS9zcmMvb3BlcmF0b3JzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBQyxVQUFVLEVBQUMsTUFBTSxNQUFNLENBQUM7QUFDaEMsT0FBTyxFQUFDLFlBQVksRUFBRSxHQUFHLEVBQUMsTUFBTSxnQkFBZ0IsQ0FBQztBQUdqRCxNQUFNLFVBQVUsUUFBUSxDQUFDLElBQWdCO0lBQ3ZDLE9BQU8sSUFBSSxVQUFVLENBQXFCLENBQUMsVUFBVSxFQUFFLEVBQUU7UUFDdkQsTUFBTSxRQUFRLEdBQUcsQ0FBQyxJQUF3QixFQUFRLEVBQUUsQ0FBQyxVQUFVLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQzNFLE1BQU0sS0FBSyxHQUFHLENBQUMsQ0FBUSxFQUFRLEVBQUUsQ0FBQyxVQUFVLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQ3RELE1BQU0sUUFBUSxHQUFHLEdBQVMsRUFBRSxDQUFDLFVBQVUsQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUNuRCxxQ0FBcUM7UUFDckMsUUFBUSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQztRQUN4QiwrQkFBK0I7UUFDL0IsTUFBTSw2QkFBNkIsR0FBRyxJQUFJLENBQUMsRUFBRSxDQUFDLGVBQWUsRUFBRSxRQUFRLENBQUMsQ0FBQztRQUN6RSxpRUFBaUU7UUFDakUsSUFBSSxDQUFDLElBQUksQ0FDTCxDQUFDLFFBQVEsRUFBRSxFQUFFO1lBQ1gsUUFBUSxDQUFDLFFBQVEsQ0FBQyxDQUFDO1lBQ25CLFVBQVUsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxRQUFRLEVBQUUsRUFBRSxDQUFDLENBQUMsQ0FBQztRQUNsQyxDQUFDLEVBQ0QsQ0FBQyxDQUFDLEVBQUUsRUFBRTtZQUNKLFFBQVEsQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUM7WUFDeEIsVUFBVSxDQUFDLEdBQUcsRUFBRSxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQztRQUNoQyxDQUFDLENBQ0osQ0FBQztRQUNGLCtEQUErRDtRQUMvRCx1REFBdUQ7UUFDdkQsT0FBTyxTQUFTLFdBQVc7WUFDekIsNkJBQTZCLEVBQUUsQ0FBQztRQUNsQyxDQUFDLENBQUM7SUFDSixDQUFDLENBQUMsQ0FBQyxJQUFJO0lBQ0gsdUVBQXVFO0lBQ3ZFLHdFQUF3RTtJQUN4RSxvRUFBb0U7SUFDcEUsWUFBWSxDQUFDLENBQUMsQ0FBQyxDQUNsQixDQUFDO0FBQ0osQ0FBQztBQU1ELE1BQU0sVUFBVSxVQUFVLENBQUMsSUFBZ0I7SUFDekMsT0FBTyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUMsSUFBSSxDQUN4QixHQUFHLENBQUMsQ0FBQyxRQUFRLEVBQUUsRUFBRSxDQUFDLENBQUM7UUFDakIsUUFBUSxFQUFFLENBQUMsUUFBUSxDQUFDLGdCQUFnQixHQUFHLFFBQVEsQ0FBQyxVQUFVLENBQUMsR0FBRyxHQUFHO1FBQ2pFLFFBQVE7S0FDVCxDQUFDLENBQUMsQ0FDSixDQUFDO0FBQ0osQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7T2JzZXJ2YWJsZX0gZnJvbSAncnhqcyc7XG5pbXBvcnQge2RlYm91bmNlVGltZSwgbWFwfSBmcm9tICdyeGpzL29wZXJhdG9ycyc7XG5pbXBvcnQgdHlwZSB7IFVwbG9hZFRhc2tTbmFwc2hvdCwgVXBsb2FkVGFzayB9IGZyb20gJ2ZpcmViYXNlL3N0b3JhZ2UnO1xuXG5leHBvcnQgZnVuY3Rpb24gZnJvbVRhc2sodGFzazogVXBsb2FkVGFzayk6IE9ic2VydmFibGU8VXBsb2FkVGFza1NuYXBzaG90PiB7XG4gIHJldHVybiBuZXcgT2JzZXJ2YWJsZTxVcGxvYWRUYXNrU25hcHNob3Q+KChzdWJzY3JpYmVyKSA9PiB7XG4gICAgY29uc3QgcHJvZ3Jlc3MgPSAoc25hcDogVXBsb2FkVGFza1NuYXBzaG90KTogdm9pZCA9PiBzdWJzY3JpYmVyLm5leHQoc25hcCk7XG4gICAgY29uc3QgZXJyb3IgPSAoZTogRXJyb3IpOiB2b2lkID0+IHN1YnNjcmliZXIuZXJyb3IoZSk7XG4gICAgY29uc3QgY29tcGxldGUgPSAoKTogdm9pZCA9PiBzdWJzY3JpYmVyLmNvbXBsZXRlKCk7XG4gICAgLy8gZW1pdCB0aGUgY3VycmVudCBzdGF0ZSBvZiB0aGUgdGFza1xuICAgIHByb2dyZXNzKHRhc2suc25hcHNob3QpO1xuICAgIC8vIGVtaXQgcHJvZ3Jlc3Npb24gb2YgdGhlIHRhc2tcbiAgICBjb25zdCB1bnN1YnNjcmliZUZyb21PblN0YXRlQ2hhbmdlZCA9IHRhc2sub24oJ3N0YXRlX2NoYW5nZWQnLCBwcm9ncmVzcyk7XG4gICAgLy8gdXNlIHRoZSBwcm9taXNlIGZvcm0gb2YgdGFzaywgdG8gZ2V0IHRoZSBsYXN0IHN1Y2Nlc3Mgc25hcHNob3RcbiAgICB0YXNrLnRoZW4oXG4gICAgICAgIChzbmFwc2hvdCkgPT4ge1xuICAgICAgICAgIHByb2dyZXNzKHNuYXBzaG90KTtcbiAgICAgICAgICBzZXRUaW1lb3V0KCgpID0+IGNvbXBsZXRlKCksIDApO1xuICAgICAgICB9LFxuICAgICAgICAoZSkgPT4ge1xuICAgICAgICAgIHByb2dyZXNzKHRhc2suc25hcHNob3QpO1xuICAgICAgICAgIHNldFRpbWVvdXQoKCkgPT4gZXJyb3IoZSksIDApO1xuICAgICAgICB9LFxuICAgICk7XG4gICAgLy8gdGhlIHVuc3Vic2NyaWJlIG1ldGhvZCByZXR1cm5zIGJ5IHN0b3JhZ2UgaXNuJ3QgdHlwZWQgaW4gdGhlXG4gICAgLy8gd2F5IHJ4anMgZXhwZWN0cywgRnVuY3Rpb24gdnMgKCkgPT4gdm9pZCwgc28gd3JhcCBpdFxuICAgIHJldHVybiBmdW5jdGlvbiB1bnN1YnNjcmliZSgpIHtcbiAgICAgIHVuc3Vic2NyaWJlRnJvbU9uU3RhdGVDaGFuZ2VkKCk7XG4gICAgfTtcbiAgfSkucGlwZShcbiAgICAgIC8vIHNpbmNlIHdlJ3JlIGVtaXR0aW5nIGZpcnN0IHRoZSBjdXJyZW50IHNuYXBzaG90IGFuZCB0aGVuIHByb2dyZXNzaW9uXG4gICAgICAvLyBpdCdzIHBvc3NpYmxlIHRoYXQgd2UgY291bGQgZG91YmxlIGZpcmUgc3luY2hyb25vdXNseTsgbmFtZWx5IHdoZW4gaW5cbiAgICAgIC8vIGEgdGVybWluYWwgc3RhdGUgKHN1Y2Nlc3MsIGVycm9yLCBjYW5jZWxlZCkuIERlYm91bmNlIHRvIGFkZHJlc3MuXG4gICAgICBkZWJvdW5jZVRpbWUoMCksXG4gICk7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgUGVyY2VudGFnZVNuYXBzaG90IHtcbiAgcHJvZ3Jlc3M6IG51bWJlcjtcbiAgc25hcHNob3Q6IFVwbG9hZFRhc2tTbmFwc2hvdDtcbn1cbmV4cG9ydCBmdW5jdGlvbiBwZXJjZW50YWdlKHRhc2s6IFVwbG9hZFRhc2spOiBPYnNlcnZhYmxlPFBlcmNlbnRhZ2VTbmFwc2hvdD4ge1xuICByZXR1cm4gZnJvbVRhc2sodGFzaykucGlwZShcbiAgICBtYXAoKHNuYXBzaG90KSA9PiAoe1xuICAgICAgcHJvZ3Jlc3M6IChzbmFwc2hvdC5ieXRlc1RyYW5zZmVycmVkIC8gc25hcHNob3QudG90YWxCeXRlcykgKiAxMDAsXG4gICAgICBzbmFwc2hvdCxcbiAgICB9KSksXG4gICk7XG59Il19

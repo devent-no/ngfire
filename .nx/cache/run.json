@@ -1,8 +1,8 @@
 {
   "run": {
     "command": "nx build ngfire",
-    "startTime": "2025-06-19T06:40:42.954Z",
-    "endTime": "2025-06-19T06:40:50.511Z",
+    "startTime": "2025-06-19T06:49:12.525Z",
+    "endTime": "2025-06-19T06:49:14.821Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "ngfire:build:production",
       "target": "build",
       "projectName": "ngfire",
-      "hash": "10965007689518411529",
-      "startTime": "2025-06-19T06:40:42.960Z",
-      "endTime": "2025-06-19T06:40:50.511Z",
+      "hash": "11816906190136891901",
+      "startTime": "2025-06-19T06:49:12.529Z",
+      "endTime": "2025-06-19T06:49:14.821Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 0

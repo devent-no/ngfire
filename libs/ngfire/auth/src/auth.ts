@@ -227,7 +227,7 @@ export abstract class BaseFireAuth<Profile, Roles extends Record<string, any> | 
           throw new Error(`Could not find document at "${this.path}/${snapshot.id}"`);
         }
         const data = await profile(this.toFirestore(doc, 'update'), tx);
-        tx.update(ref, data as UpdateData<Profile>);
+        tx.update(ref, data as any);
         if (this.onUpdate) await this.onUpdate(data, { write: tx, ctx: options.ctx });
         return tx;
       });

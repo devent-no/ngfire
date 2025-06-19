@@ -15,7 +15,7 @@ export function fromRef<T=DocumentData>(
 ): Observable<any> {
   /* eslint-enable @typescript-eslint/no-explicit-any */
   return new Observable(subscriber => {
-    const unsubscribe = onSnapshot<T>(ref, options, {
+    const unsubscribe = onSnapshot<T, DocumentData>(ref, options, {
       next: subscriber.next.bind(subscriber), 
       error: subscriber.error.bind(subscriber), 
       complete: subscriber.complete.bind(subscriber),

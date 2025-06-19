@@ -2,6 +2,8 @@
 
 # compiled output
 /dist
+# Allow the built ngfire library to be checked in
+!/dist/libs/ngfire
 /tmp
 /out-tsc
 

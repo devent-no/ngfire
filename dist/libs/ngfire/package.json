@@ -1,0 +1,94 @@
+{
+  "name": "ngfire",
+  "version": "0.0.53",
+  "homepage": "https://github.com/dappsnation/ngfire",
+  "peerDependencies": {
+    "@angular/common": ">=16.0.0",
+    "@angular/core": ">=16.0.0",
+    "@angular/platform-browser": ">=16.0.0",
+    "@nx/devkit": ">=16.0.0",
+    "firebase": ">=10.12.0 <12.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
+  "module": "fesm2022/ngfire.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2022": "./esm2022/ngfire.mjs",
+      "esm": "./esm2022/ngfire.mjs",
+      "default": "./fesm2022/ngfire.mjs"
+    },
+    "./analytics": {
+      "types": "./analytics/index.d.ts",
+      "esm2022": "./esm2022/analytics/ngfire-analytics.mjs",
+      "esm": "./esm2022/analytics/ngfire-analytics.mjs",
+      "default": "./fesm2022/ngfire-analytics.mjs"
+    },
+    "./app": {
+      "types": "./app/index.d.ts",
+      "esm2022": "./esm2022/app/ngfire-app.mjs",
+      "esm": "./esm2022/app/ngfire-app.mjs",
+      "default": "./fesm2022/ngfire-app.mjs"
+    },
+    "./auth": {
+      "types": "./auth/index.d.ts",
+      "esm2022": "./esm2022/auth/ngfire-auth.mjs",
+      "esm": "./esm2022/auth/ngfire-auth.mjs",
+      "default": "./fesm2022/ngfire-auth.mjs"
+    },
+    "./core": {
+      "types": "./core/index.d.ts",
+      "esm2022": "./esm2022/core/ngfire-core.mjs",
+      "esm": "./esm2022/core/ngfire-core.mjs",
+      "default": "./fesm2022/ngfire-core.mjs"
+    },
+    "./database": {
+      "types": "./database/index.d.ts",
+      "esm2022": "./esm2022/database/ngfire-database.mjs",
+      "esm": "./esm2022/database/ngfire-database.mjs",
+      "default": "./fesm2022/ngfire-database.mjs"
+    },
+    "./emulators": {
+      "types": "./emulators/index.d.ts",
+      "esm2022": "./esm2022/emulators/ngfire-emulators.mjs",
+      "esm": "./esm2022/emulators/ngfire-emulators.mjs",
+      "default": "./fesm2022/ngfire-emulators.mjs"
+    },
+    "./firestore": {
+      "types": "./firestore/index.d.ts",
+      "esm2022": "./esm2022/firestore/ngfire-firestore.mjs",
+      "esm": "./esm2022/firestore/ngfire-firestore.mjs",
+      "default": "./fesm2022/ngfire-firestore.mjs"
+    },
+    "./functions": {
+      "types": "./functions/index.d.ts",
+      "esm2022": "./esm2022/functions/ngfire-functions.mjs",
+      "esm": "./esm2022/functions/ngfire-functions.mjs",
+      "default": "./fesm2022/ngfire-functions.mjs"
+    },
+    "./storage": {
+      "types": "./storage/index.d.ts",
+      "esm2022": "./esm2022/storage/ngfire-storage.mjs",
+      "esm": "./esm2022/storage/ngfire-storage.mjs",
+      "default": "./fesm2022/ngfire-storage.mjs"
+    },
+    "./tokens": {
+      "types": "./tokens/index.d.ts",
+      "esm2022": "./esm2022/tokens/ngfire-tokens.mjs",
+      "esm": "./esm2022/tokens/ngfire-tokens.mjs",
+      "default": "./fesm2022/ngfire-tokens.mjs"
+    }
+  },
+  "sideEffects": false
+}
